@@ -1,0 +1,23 @@
+version: '3.9' # the attribute `version` is obsolete on new versions - https://docs.docker.com/reference/compose-file/version-and-name/#version-top-level-element-obsolete
+
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3.9-management-alpine
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+    volumes:
+      - ./config/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+      - ./config/enable_plugins:/etc/rabbitmq/enable_plugins
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
