@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  coredns:
+    image: coredns/coredns:latest
+    container_name: coredns
+    volumes:
+      - ./Corefile:/Corefile       # Monta o arquivo Corefile para configuração do CoreDNS
+    ports:
+      - "53:53/udp"                # Expõe a porta UDP 53 para consultas DNS
+      - "53:53/tcp"                # Expõe a porta TCP 53 para consultas DNS (opcional)
+    networks:
+      - dns-net                    # Rede para comunicação com outros serviços
+
+networks:
+  dns-net:
+    driver: bridge
