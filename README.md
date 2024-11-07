@@ -8,6 +8,7 @@
 ## Samples of Docker Compose Applications
 
 - [`RABBIT MQ`](./rabbit-mq) - Sample Rabbit MQ Service 
+- [`COREDNS`](./core-dns) - Sample CoreDNS Service
 
 ## Getting started
 
