@@ -5,12 +5,12 @@ services:
     image: coredns/coredns:latest
     container_name: coredns
     volumes:
-      - ./Corefile:/Corefile       # Monta o arquivo Corefile para configuração do CoreDNS
+      - ./Corefile:/Corefile
     ports:
-      - "53:53/udp"                # Expõe a porta UDP 53 para consultas DNS
-      - "53:53/tcp"                # Expõe a porta TCP 53 para consultas DNS (opcional)
+      - "53:53/udp"
+      - "53:53/tcp"
     networks:
-      - dns-net                    # Rede para comunicação com outros serviços
+      - dns-net
 
 networks:
   dns-net:
